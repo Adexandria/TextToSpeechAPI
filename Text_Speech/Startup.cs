@@ -39,11 +39,11 @@ namespace Text_Speech
             services.AddScoped<IBlob, Blob>();
             services.AddSwaggerGen(setupAction =>
             {
-                setupAction.SwaggerDoc("FruitsOpenAPISpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
+                setupAction.SwaggerDoc("TextToSpeechAPISpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
                 {
                     Title = "Text to Speech Api",
                     Version = "1.0",
-                    Description = "An Api that returns a detailed property of an image of a fruit",
+                    Description = "An Api that converts a text image into an audio file",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact()
                     {
                         Email = "adeolaaderibigbe09@gmail.com",
@@ -53,10 +53,7 @@ namespace Text_Speech
 
 
                 });
-                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
-                setupAction.IncludeXmlComments(xmlPath);
-            });
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -32,6 +32,7 @@
           "NLayer.NAudioSupport": "1.2.0",
           "Newtonsoft.Json": "13.0.1",
           "Swashbuckle.AspNetCore": "6.1.3",
+          "Swashbuckle.AspNetCore.Annotations": "6.1.3",
           "Swashbuckle.AspNetCore.Swagger": "6.1.3",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.1.3",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.1.3",
@@ -872,6 +873,20 @@
           "Swashbuckle.AspNetCore.Swagger": "6.1.3",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.1.3",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.1.3"
+        }
+      },
+      "Swashbuckle.AspNetCore.Annotations/6.1.3": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.1.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "assemblyVersion": "6.1.3.0",
+            "fileVersion": "6.1.3.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Annotations.dll": {}
         }
       },
       "Swashbuckle.AspNetCore.Swagger/6.1.3": {
@@ -3637,6 +3652,13 @@
       "sha512": "sha512-NjPt/1hmsb0DT+YkTBsU+zHzsRObJUoAgNk78GLlCQzfHrXXUXX3eWm/WDPl31CyD3f55gzbGWotrYRQ+CyXfQ==",
       "path": "swashbuckle.aspnetcore/6.1.3",
       "hashPath": "swashbuckle.aspnetcore.6.1.3.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Annotations/6.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I5CiL24qv/VyqGDgrohfy/HG9datPIFABKSH9OW2dLOz6vlDhyCQ9bl4TRXM7K5pBvQmw8xF4g41MEGfK+6PmQ==",
+      "path": "swashbuckle.aspnetcore.annotations/6.1.3",
+      "hashPath": "swashbuckle.aspnetcore.annotations.6.1.3.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/6.1.3": {
       "type": "package",

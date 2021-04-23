@@ -11,6 +11,7 @@ namespace Text_Speech.Services
     {
         Task Upload(IFormFile model);
         Uri GetUri(string file);
+        Task UploadStream(Stream model);
         Task<byte[]> Download(IFormFile file);
         Task<string[]> DownloadFile(string file);
     }

@@ -28,6 +28,16 @@ namespace Text_Speech.Services
         }
         
     }
+        public async Task UploadStream(Stream model)
+        {
+            var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
+            var blobClient = blobContainer.GetBlobClient("Audio.mp3");
+            if (blobClient.ExistsAsync().Result)
+            {
+                await blobClient.UploadAsync(model,overwrite:true);    
+            }
+
+        }
         public Uri GetUri(string file) 
         {
             var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
@@ -38,6 +48,7 @@ namespace Text_Speech.Services
                 var s = blobClient.Uri;
                 return s;
             }
+            
             return null;
         }
         

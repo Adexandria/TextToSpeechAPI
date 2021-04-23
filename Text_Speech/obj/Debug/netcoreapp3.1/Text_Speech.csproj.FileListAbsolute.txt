@@ -72,3 +72,8 @@ C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\Mic
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Debug\netcoreapp3.1\Text_Speech.csproj.CoreCompileInputs.cache
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Debug\netcoreapp3.1\Text_Speech.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Debug\netcoreapp3.1\Text_Speech.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Debug\netcoreapp3.1\web.config

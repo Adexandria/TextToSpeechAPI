@@ -11,7 +11,8 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "weatherforecast",
+      "launchBrowser": true,
+      "launchUrl": "index.html",
       "environmentVariables": {
         "SPEECH_TRANSLATOR_KEY": "https://centralus.tts.speech.microsoft.com/cognitiveservices/v1",
         "COMPUTER_VISION_SUBSCRIPTION_KEY": "1acfe0ea8c65492eb477a491f31d7071",

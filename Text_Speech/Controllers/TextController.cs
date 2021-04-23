@@ -44,7 +44,7 @@ namespace Text_Speech.Controllers
         
         [SwaggerResponse((int)HttpStatusCode.OK)]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
-
+        [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         [HttpPost]
         public async Task<ActionResult<string>> Post(IFormFile file)
         {
@@ -112,19 +112,10 @@ namespace Text_Speech.Controllers
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/ssml+xml");
                     httpResponse = await client.PostAsync(speechEndpoint, content);
                 }
-                var contentStream =httpResponse.Content;
-                using (var files = new FileStream(path, FileMode.Open))
-                {
-                    await contentStream.CopyToAsync(files);
-                }
-                /* var config = SpeechConfig.FromSubscription(speechKey, "centralus");
-                 using var audio = AudioConfig.FromWavFileOutput(path);
-                 using var synthesizer = new SpeechSynthesizer(config);
-                var k= await synthesizer.SpeakTextAsync(file.FullName);*/
-
-                //var x = GetRawMp3Frames(path);
-
-                string s = "Sucessful";
+                var contentStream =await httpResponse.Content.ReadAsStreamAsync();
+                await blob.UploadStream(contentStream);
+               var url = blob.GetUri("Audio.mp3");
+                string s = $"Sucessful, copy on this {url}";
                 return s;
             }
             catch (Exception e)
@@ -134,22 +125,7 @@ namespace Text_Speech.Controllers
             }
         }
      
-            private static byte[] GetRawMp3Frames(string filename)
-        {
            
-            using (MemoryStream output = new MemoryStream())
-            {
-                Mp3FileReader reader = new Mp3FileReader(filename);
-                Mp3Frame frame;
-                while ((frame = reader.ReadNextFrame()) != null)
-                {
-                    output.Write(frame.RawData, 0, frame.RawData.Length);
-                }
-                return output.ToArray();
-
-            }
-           
-        }
         private async Task ReadandWriteText(string text)
         {
             string [] speaker = await blob.DownloadFile("Speaker.ssml");
