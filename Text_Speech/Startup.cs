@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +37,26 @@ namespace Text_Speech
                 return new BlobServiceClient(Configuration.GetConnectionString("AzureBlobStorage"));
             });
             services.AddScoped<IBlob, Blob>();
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("FruitsOpenAPISpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Text to Speech Api",
+                    Version = "1.0",
+                    Description = "An Api that returns a detailed property of an image of a fruit",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email = "adeolaaderibigbe09@gmail.com",
+                        Name = "Adeola Aderibigbe",
+                        Url = new Uri("https://twitter.com/addiexandria")
+                    }
+
+
+                });
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                setupAction.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +69,12 @@ namespace Text_Speech
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint("/swagger/TextToSpeechAPISpecification/swagger.json", "My Text To Speech Api");
+                setupAction.RoutePrefix = string.Empty;
+            });
             app.UseRouting();
 
             app.UseAuthorization();
