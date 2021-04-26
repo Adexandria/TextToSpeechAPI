@@ -39,7 +39,7 @@ namespace Text_Speech
                 {
                     Title = "Text to Speech Api",
                     Version = "1.0",
-                    Description = "An Api that converts a text image into an audio file",
+                    Description = "A REST API that converts a text image to an mp3 file.",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact()
                     {
                         Email = "adeolaaderibigbe09@gmail.com",
