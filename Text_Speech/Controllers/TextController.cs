@@ -168,7 +168,7 @@ namespace Text_Speech.Controllers
         [NonAction]
         private string Getwords(Analyze analyze)
         {
-            var words = analyze.regions.SelectMany(e => e.lines.SelectMany(e => e.words).Select(s => s.text)).ToList();
+            var words = analyze.Regions.SelectMany(e => e.Lines.SelectMany(e => e.Words).Select(s => s.Text)).ToList();
             string sentence = String.Join(" ", words);
             return sentence;
         }
