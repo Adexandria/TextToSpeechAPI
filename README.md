@@ -1,5 +1,5 @@
 # TextToSpeechAPI
-##### A REST API that converts a text image to a mp3 file. The text image can either be in Jpeg(image/jpeg) or png(image/png).
+##### A REST API that converts a text image to an mp3 file. The text image can either be in Jpeg(image/jpeg) or png(image/png).
 ## Application
 - ##### Azure Computer Vison
 - ##### Azure Translate Speech
