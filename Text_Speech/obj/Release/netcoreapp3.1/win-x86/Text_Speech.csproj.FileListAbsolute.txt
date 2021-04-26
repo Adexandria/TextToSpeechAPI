@@ -667,4 +667,5 @@ C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\w
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\win-x86\System.Security.Permissions.dll
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\win-x86\System.Windows.Extensions.dll
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\win-x86\aspnetcorev2_inprocess.dll
-C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Release\netcoreapp3.1\win-x86\NuGet\6882059EBD3369555DACD93D13FEB6AB2F7D0A9A\MimeTypes\2.2.0\MimeTypes.cs
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Release\netcoreapp3.1\win-x86\Text_Speech.csprojAssemblyReference.cache
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\win-x86\Text_Speech.xml

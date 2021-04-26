@@ -77,3 +77,4 @@ C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Release\netcoreapp3.1\T
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Release\netcoreapp3.1\Text_Speech.pdb
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\obj\Release\netcoreapp3.1\Text_Speech.genruntimeconfig.cache
 C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\web.config
+C:\Users\HP 650\source\repos\Text_Speech\Text_Speech\bin\Release\netcoreapp3.1\Text_Speech.xml

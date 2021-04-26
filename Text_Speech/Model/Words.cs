@@ -1,8 +1,12 @@
-﻿namespace TextTranslations.Model
+﻿using Newtonsoft.Json;
+
+namespace TextTranslations.Model
 {
     public class Words
     {
-        public string boundingBox { get; set; }
-        public string text { get; set; }
+        [JsonProperty("boundingBox")]
+        public string BoundingBox { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 }

@@ -5,8 +5,9 @@ namespace TextTranslations.Model
 {
     public class RegionsItems
     {
-        public string boundingBox { get; set; }
+        [JsonProperty("boundingBox")]
+        public string BoundingBox { get; set; }
         [JsonProperty("lines")]
-        public IList<Lines> lines { get; set; }
+        public IList<Lines> Lines { get; set; }
     }
 }

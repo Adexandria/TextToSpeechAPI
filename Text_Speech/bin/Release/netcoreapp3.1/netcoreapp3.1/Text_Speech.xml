@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Text_Speech</name>
+    </assembly>
+    <members>
+        <member name="M:Text_Speech.Controllers.TextController.Post(Microsoft.AspNetCore.Http.IFormFile)">
+            <param name="file"></param>
+             <summary>
+             To convert a text image into an Audio File.The text image can either be in jpeg or png
+             </summary>
+             
+             <returns>A string status</returns>
+        </member>
+        <member name="T:Text_Speech.MimeTypes">
+            <summary>
+            Provides utilities for mapping file names and extensions to MIME-types.
+            </summary>
+        </member>
+        <member name="P:Text_Speech.MimeTypes.FallbackMimeType">
+            <summary>
+            The fallback MIME-type. Defaults to <c>application/octet-stream</c>.
+            </summary>
+        </member>
+        <member name="M:Text_Speech.MimeTypes.GetMimeTypeExtensions(System.String)">
+            <summary>
+            Attempts to fetch all available file extensions for a MIME-type.
+            </summary>
+            <param name="mimeType">The name of the MIME-type</param>
+            <returns>All available extensions for the given MIME-type</returns>
+        </member>
+        <member name="M:Text_Speech.MimeTypes.TryGetMimeType(System.String,System.String@)">
+            <summary>
+            Tries to get the MIME-type for the given file name.
+            </summary>
+            <param name="fileName">The name of the file.</param>
+            <param name="mimeType">The MIME-type for the given file name.</param>
+            <returns><c>true</c> if a MIME-type was found, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Text_Speech.MimeTypes.GetMimeType(System.String)">
+            <summary>
+            Gets the MIME-type for the given file name,
+            or <see cref="P:Text_Speech.MimeTypes.FallbackMimeType"/> if a mapping doesn't exist.
+            </summary>
+            <param name="fileName">The name of the file.</param>
+            <returns>The MIME-type for the given file name.</returns>
+        </member>
+    </members>
+</doc>
