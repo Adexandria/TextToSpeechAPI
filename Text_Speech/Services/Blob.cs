@@ -7,38 +7,34 @@ using System.Threading.Tasks;
 
 namespace Text_Speech.Services
 {
-    public class Blob : IBlob { 
-    private readonly BlobServiceClient _blobServiceClient;
-    public Blob(BlobServiceClient blobServiceClient)
+    public class Blob : IBlob
     {
-        _blobServiceClient = blobServiceClient;
-    }
-
-    public async Task Upload(IFormFile model)
-    {
-        var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
-        var blobClient = blobContainer.GetBlobClient(model.FileName);
-        if (!blobClient.ExistsAsync().Result)
+        private readonly string Container = "textimages";
+        private readonly BlobServiceClient _blobServiceClient;
+        public Blob(BlobServiceClient blobServiceClient)
         {
-           await blobClient.UploadAsync(model.OpenReadStream());
+            _blobServiceClient = blobServiceClient;
         }
+
+        public async Task Upload(IFormFile model)
+        {
+            var blobClient = GetBlobServiceClient(model.FileName);
+            var isExists = await blobClient.ExistsAsync();
+            if (!isExists)
+            {
+                await blobClient.UploadAsync(model.OpenReadStream());
+            }
         
-    }
+        }
         public async Task UploadStream(Stream model)
         {
-            var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
-            var blobClient = blobContainer.GetBlobClient("Audio.mp3");
-            if (blobClient.ExistsAsync().Result)
-            {
-                await blobClient.UploadAsync(model,overwrite:true);    
-            }
+            var blobClient = GetBlobServiceClient("Audio.mp3");
+            await blobClient.UploadAsync(model,overwrite:true);    
 
         }
         public Uri GetUri(string file) 
         {
-            var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
-            var blobClient = blobContainer.GetBlobClient(file);
-
+            var blobClient = GetBlobServiceClient(file);
             if (blobClient.ExistsAsync().Result)
             {
                 var s = blobClient.Uri;
@@ -47,25 +43,18 @@ namespace Text_Speech.Services
             
             return null;
         }
-        
-       
         public async Task<byte[]> Download(IFormFile file) 
         {
-            var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
-            var blobClient = blobContainer.GetBlobClient(file.FileName);
+            var blobClient = GetBlobServiceClient(file.FileName);
             var download =  blobClient.Download();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                await download.Value.Content.CopyToAsync(ms);
-                return ms.ToArray();
-            }
+            using MemoryStream ms = new MemoryStream();
+            await download.Value.Content.CopyToAsync(ms);
+            return ms.ToArray();
 
         }
-
         public async Task<string[]> DownloadFile(string file)
         {
-            var blobContainer = _blobServiceClient.GetBlobContainerClient("textimages");
-            var blobClient = blobContainer.GetBlobClient(file);
+            var blobClient = GetBlobServiceClient(file);
             var files =  blobClient.Download();
             string[] result;
             using (MemoryStream ms = new MemoryStream())
@@ -79,6 +68,12 @@ namespace Text_Speech.Services
 
             return result;
         }
+        private BlobClient GetBlobServiceClient(string name) 
+        {
+            var blobContainer = _blobServiceClient.GetBlobContainerClient(Container);
+            var blobClient = blobContainer.GetBlobClient(name);
+            return blobClient;
+        }
     }
-    }
+}
 
