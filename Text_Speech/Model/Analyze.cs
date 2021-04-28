@@ -13,7 +13,7 @@ namespace TextTranslations.Model
         [JsonProperty("orientation")]
         public string Orientation { get; set; }
         [JsonProperty("regions")]
-        public IList<RegionsItems> Regions { get; set; }
+        public IList<Region> Region { get; set; }
        
     }
 }
