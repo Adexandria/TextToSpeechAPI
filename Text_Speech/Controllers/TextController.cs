@@ -69,7 +69,7 @@ namespace Text_Speech.Controllers
                 Analysis analyze = JsonConvert.DeserializeObject<Analysis>(details);
 
                 var sentence = Getwords(analyze);
-                var result = await TexttoSpeech(sentence);
+                var result = await TextToSpeech(sentence);
 
                 return Ok(result);
             }
@@ -105,7 +105,7 @@ namespace Text_Speech.Controllers
         }
         //To get the audio file
         [NonAction]
-        private async Task<string> TexttoSpeech(string text)
+        private async Task<string> TextToSpeech(string text)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace Text_Speech.Controllers
                 client.DefaultRequestHeaders.Add("X-Microsoft-OutputFormat", "audio-48khz-96kbitrate-mono-mp3");
                 client.DefaultRequestHeaders.Add("User-Agent", "TranslateSpeech");
                 HttpResponseMessage httpResponse;
-                await ReadandWriteText(text);
+                await ReadAndWriteText(text);
 
                 using (StreamContent content = new StreamContent(file.OpenRead()))
                 {
@@ -133,7 +133,7 @@ namespace Text_Speech.Controllers
         }
         //To add the text into the ssml file
         [NonAction]   
-        private async Task ReadandWriteText(string text)
+        private async Task ReadAndWriteText(string text)
         {
             // a ssml template file
             string [] speakerfile = await blob.DownloadFile("Speaker.ssml");
@@ -169,9 +169,9 @@ namespace Text_Speech.Controllers
 
        
         [NonAction]
-        private string Getwords(Analysis analyze)
+        private string Getwords(Analysis analysis)
         {
-            var extractedWords = analyze.Region.SelectMany(data => data.Line.SelectMany(data => data.Word).Select(data => data.Text)).ToList();
+            var extractedWords = analysis.Region.SelectMany(data => data.Line.SelectMany(data => data.Word).Select(data => data.Text)).ToList();
             string compliedSentence = String.Join(" ", extractedWords);
             return compliedSentence;
         }
