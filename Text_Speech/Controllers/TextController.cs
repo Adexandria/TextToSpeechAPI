@@ -26,14 +26,14 @@ namespace Text_Speech.Controllers
     {
         private readonly IBlob blob;
 
-        readonly static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
-        readonly static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
-        readonly string uriBase = endpoint + "vision/v3.0/ocr";
+        readonly static string computerVisionSubscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
+        readonly static string computerVisonEndpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+        readonly string computerVisionUriBase = computerVisonEndpoint + "vision/v3.0/ocr";
 
         FileInfo file;
 
-        readonly static string speechKey = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_SUBSCRIPTION_KEY");
-        readonly static string speechEndpoint = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_KEY");
+        readonly static string speechTranslateKey = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_SUBSCRIPTION_KEY");
+        readonly static string speechTranslateEndpoint = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_KEY");
 
       
         public TextController(IBlob blob)
@@ -57,42 +57,45 @@ namespace Text_Speech.Controllers
                     return this.StatusCode(StatusCodes.Status404NotFound, "file not found");
                 }
                 string mediatype = file.ContentType;
-                if(mediatype != MimeMapping.KnownMimeTypes.Jpeg && mediatype != MimeMapping.KnownMimeTypes.Png)
-                { 
-                return this.StatusCode(StatusCodes.Status400BadRequest, "The image must be in jpeg or png");
+                if (mediatype != MimeMapping.KnownMimeTypes.Jpeg && mediatype != MimeMapping.KnownMimeTypes.Png)
+                {
+                    return this.StatusCode(StatusCodes.Status400BadRequest, "The image must be in jpeg or png");
                 }
-                
+
                 await blob.Upload(file);
                 var downloadedfile = await blob.Download(file);
-                
+
                 string details = await MakeAnalysisRequest(downloadedfile);
-                Analyze analyze = JsonConvert.DeserializeObject<Analyze>(details);
+                Analysis analyze = JsonConvert.DeserializeObject<Analysis>(details);
 
                 var sentence = Getwords(analyze);
                 var result = await TexttoSpeech(sentence);
 
                 return Ok(result);
-                }catch(Exception e) 
-                { 
-                   return BadRequest(e.Message); 
-                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        
         }
+
         // To process the data on the images and retrieve the texts in string
         [NonAction]
         private async Task<string> MakeAnalysisRequest(byte[] file)
         {
             try
             {
-                var client = GetClient(subscriptionKey);
+                var client = GetClient(computerVisionSubscriptionKey);
                 HttpResponseMessage httpResponse;
-                using (ByteArrayContent content = new ByteArrayContent(file))
+                using (ByteArrayContent Bytecontent = new ByteArrayContent(file))
                 {
-                    content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                    httpResponse = await client.PostAsync(uriBase, content);
+                    Bytecontent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    httpResponse = await client.PostAsync(computerVisionUriBase, Bytecontent);
                 }
-                string contentString = await httpResponse.Content.ReadAsStringAsync();
-                var newContent = JToken.Parse(contentString).ToString();
-                return newContent;
+                string responseContent = await httpResponse.Content.ReadAsStringAsync();
+                var stringContent = JToken.Parse(responseContent).ToString();
+                return stringContent;
             }
             catch (Exception e)
             {
@@ -106,7 +109,7 @@ namespace Text_Speech.Controllers
         {
             try
             {
-                var client  = GetClient(speechKey);
+                var client  = GetClient(speechTranslateKey);
                 client.DefaultRequestHeaders.Add("X-Microsoft-OutputFormat", "audio-48khz-96kbitrate-mono-mp3");
                 client.DefaultRequestHeaders.Add("User-Agent", "TranslateSpeech");
                 HttpResponseMessage httpResponse;
@@ -115,7 +118,7 @@ namespace Text_Speech.Controllers
                 using (StreamContent content = new StreamContent(file.OpenRead()))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/ssml+xml");
-                    httpResponse = await client.PostAsync(speechEndpoint, content);
+                    httpResponse = await client.PostAsync(speechTranslateEndpoint, content);
                 }
                 var contentStream = await httpResponse.Content.ReadAsStreamAsync();
                 await blob.UploadStream(contentStream);
@@ -155,7 +158,7 @@ namespace Text_Speech.Controllers
             writer.Close();
         }
 
-        //To get the client
+        
         [NonAction]
         private HttpClient GetClient(string key)
         {
@@ -164,13 +167,13 @@ namespace Text_Speech.Controllers
             return client;
         }
 
-        //To process the result gotten from the analysis and retrieve the words in a string format
+       
         [NonAction]
-        private string Getwords(Analyze analyze)
+        private string Getwords(Analysis analyze)
         {
-            var words = analyze.Regions.SelectMany(e => e.Lines.SelectMany(e => e.Words).Select(s => s.Text)).ToList();
-            string sentence = String.Join(" ", words);
-            return sentence;
+            var extractedWords = analyze.Region.SelectMany(data => data.Line.SelectMany(data => data.Word).Select(data => data.Text)).ToList();
+            string compliedSentence = String.Join(" ", extractedWords);
+            return compliedSentence;
         }
 
     }

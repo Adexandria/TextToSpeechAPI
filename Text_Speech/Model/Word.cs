@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace TextTranslations.Model
 {
-    public class Lines
+    public class Word
     {
         [JsonProperty("boundingBox")]
         public string BoundingBox { get; set; }
-        [JsonProperty("words")]
-        public IList<Words> Words { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 }

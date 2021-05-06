@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TextTranslations.Model
 {
-    public class Analyze
+    public class Analysis
     {
 
         [JsonProperty("language")]
