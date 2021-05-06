@@ -33,7 +33,7 @@ namespace Text_Speech.Controllers
         FileInfo file;
 
         readonly static string speechTranslateKey = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_SUBSCRIPTION_KEY");
-        readonly static string speechTranslateEndpoint = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_KEY");
+        readonly static string speechTranslateEndpoint = Environment.GetEnvironmentVariable("SPEECH_TRANSLATOR_ENDPOINT");
 
       
         public TextController(IBlob blob)
