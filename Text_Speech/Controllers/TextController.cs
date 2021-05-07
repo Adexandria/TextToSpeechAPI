@@ -65,10 +65,10 @@ namespace Text_Speech.Controllers
                 await blob.Upload(file);
                 var downloadedfile = await blob.Download(file);
 
-                string details = await MakeAnalysisRequest(downloadedfile);
-                Analysis analyze = JsonConvert.DeserializeObject<Analysis>(details);
+                string analyzedDetails = await MakeAnalysisRequest(downloadedfile);
+                Analysis analysis = JsonConvert.DeserializeObject<Analysis>(analyzedDetails);
 
-                var sentence = Getwords(analyze);
+                var sentence = Getwords(analysis);
                 var result = await TextToSpeech(sentence);
 
                 return Ok(result);
@@ -141,20 +141,20 @@ namespace Text_Speech.Controllers
             file = new FileInfo("Speakers");
             var ssmlFile =   file.Create();
 
-            StringBuilder builder = new StringBuilder();
+            StringBuilder ssmlBuilder = new StringBuilder();
             for (int i = 0; i < speakerfile.Length; i++)
             {
                 if (string.IsNullOrWhiteSpace(speakerfile[i]))
                 {
-                    builder.Append(text);
+                    ssmlBuilder.Append(text);
                 }
                 else
                 {
-                    builder.Append(speakerfile[i]);
+                    ssmlBuilder.Append(speakerfile[i]);
                 }
             }
             var writer = new StreamWriter(ssmlFile);
-            writer.Write(builder.ToString());
+            writer.Write(ssmlBuilder.ToString());
             writer.Close();
         }
 
