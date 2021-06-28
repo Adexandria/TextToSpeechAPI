@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP 650\\source\\repos\\Text_Speech\\Text_Speech\\Text_Speech.csproj": {}
+    "C:\\Users\\T14\\Documents\\TextToSpeechAPI\\Text_Speech\\Text_Speech.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP 650\\source\\repos\\Text_Speech\\Text_Speech\\Text_Speech.csproj": {
+    "C:\\Users\\T14\\Documents\\TextToSpeechAPI\\Text_Speech\\Text_Speech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP 650\\source\\repos\\Text_Speech\\Text_Speech\\Text_Speech.csproj",
+        "projectUniqueName": "C:\\Users\\T14\\Documents\\TextToSpeechAPI\\Text_Speech\\Text_Speech.csproj",
         "projectName": "Text_Speech",
-        "projectPath": "C:\\Users\\HP 650\\source\\repos\\Text_Speech\\Text_Speech\\Text_Speech.csproj",
-        "packagesPath": "C:\\Users\\HP 650\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP 650\\source\\repos\\Text_Speech\\Text_Speech\\obj\\",
+        "projectPath": "C:\\Users\\T14\\Documents\\TextToSpeechAPI\\Text_Speech\\Text_Speech.csproj",
+        "packagesPath": "C:\\Users\\T14\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\T14\\Documents\\TextToSpeechAPI\\Text_Speech\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP 650\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\T14\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Azure.Storage.Blobs": {
               "target": "Package",
@@ -116,12 +115,9 @@
             },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

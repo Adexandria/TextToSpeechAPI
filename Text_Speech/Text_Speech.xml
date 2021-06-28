@@ -45,5 +45,13 @@
             <param name="fileName">The name of the file.</param>
             <returns>The MIME-type for the given file name.</returns>
         </member>
+        <member name="M:TextToDocumentAPI.Controller.TextController.Post(Microsoft.AspNetCore.Http.IFormFile)">
+            <param name="file"></param>
+             <summary>
+             
+             </summary>
+             
+             <returns>A string status</returns>
+        </member>
     </members>
 </doc>

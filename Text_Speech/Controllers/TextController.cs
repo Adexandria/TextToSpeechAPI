@@ -11,8 +11,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Text_Speech.Model;
 using Text_Speech.Services;
-using TextTranslations.Model;
 
 namespace Text_Speech.Controllers
 {

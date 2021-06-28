@@ -14,11 +14,11 @@
       "launchBrowser": true,
       "launchUrl": "index.html",
       "environmentVariables": {
-        "SPEECH_TRANSLATOR_KEY": "https://centralus.tts.speech.microsoft.com/cognitiveservices/v1",
         "COMPUTER_VISION_SUBSCRIPTION_KEY": "1acfe0ea8c65492eb477a491f31d7071",
         "SPEECH_TRANSLATOR_SUBSCRIPTION_KEY": "b84fce6faefc4fd6989ae5f1c3db151e",
         "LOCATION": "centralus",
         "COMPUTER_VISION_ENDPOINT": "https://scantext.cognitiveservices.azure.com/",
+        "SPEECH_TRANSLATOR_ENDPOINT": "https://centralus.tts.speech.microsoft.com/cognitiveservices/v1",
         "TRANSLATOR_ENDPOINT": "https://api.cognitive.microsofttranslator.com/",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "TRANSLATOR_SUBSCRIPTION_KEY": "70ddd7262c804025b9c0a4c56360bcf5"

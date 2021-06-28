@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace TextTranslations.Model
+namespace Text_Speech.Model
 {
     public class Line
     {

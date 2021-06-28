@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TextTranslations.Model
+namespace Text_Speech.Model
 {
     public class Word
     {
